@@ -29,7 +29,7 @@
  * @property {string} [textBaseline] 默认根据textPosition自动设置，附加文本垂直对齐。
  *                                可以是top, bottom, middle, alphabetic, hanging, ideographic
  */
-define(function (require) {
+
 
     var Base = require('./Base');
     var PathProxy = require('./util/PathProxy');
@@ -84,12 +84,12 @@ define(function (require) {
                 'm', 'M', 'l', 'L', 'v', 'V', 'h', 'H', 'z', 'Z',
                 'c', 'C', 'q', 'Q', 't', 'T', 's', 'S', 'a', 'A'
             ];
-            
+
             cs = cs.replace(/-/g, ' -');
             cs = cs.replace(/  /g, ' ');
             cs = cs.replace(/ /g, ',');
             cs = cs.replace(/,,/g, ',');
-            
+
             var n;
             // create pipes so that we can split the data
             for (n = 0; n < cc.length; n++) {
@@ -393,7 +393,7 @@ define(function (require) {
             var singlePointList = [];
             for (var i = 0, l = pathArray.length; i < l; i++) {
                 if (pathArray[i].command.toUpperCase() == 'M') {
-                    singlePointList.length > 0 
+                    singlePointList.length > 0
                     && pointList.push(singlePointList);
                     singlePointList = [];
                 }
@@ -403,7 +403,7 @@ define(function (require) {
                 }
             }
             singlePointList.length > 0 && pointList.push(singlePointList);
-            
+
             for (var i = 0, l = pathArray.length; i < l; i++) {
                 var c = pathArray[i].command;
                 var p = pathArray[i].points;
@@ -459,7 +459,7 @@ define(function (require) {
             if (style.__rect) {
                 return style.__rect;
             }
-            
+
             var lineWidth;
             if (style.brushType == 'stroke' || style.brushType == 'fill') {
                 lineWidth = style.lineWidth || 1;
@@ -490,7 +490,7 @@ define(function (require) {
                         if (p[j] + x > maxX) {
                             maxX = p[j];
                         }
-                    } 
+                    }
                     else {
                         if (p[j] + y < minY) {
                             minY = p[j];
@@ -529,5 +529,4 @@ define(function (require) {
     };
 
     require('../tool/util').inherits(Path, Base);
-    return Path;
-});
+    module.exports = Path;

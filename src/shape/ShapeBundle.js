@@ -37,7 +37,7 @@
  * @property {string} [textBaseline] 默认根据textPosition自动设置，附加文本垂直对齐。
  *                                可以是top, bottom, middle, alphabetic, hanging, ideographic
  */
-define(function (require) {
+
 
     var Base = require('./Base');
 
@@ -132,7 +132,7 @@ define(function (require) {
             var originPos = this.transformCoordToLocal(x, y);
             x = originPos[0];
             y = originPos[1];
-            
+
             if (this.isCoverRect(x, y)) {
                 for (var i = 0; i < this.style.shapeList.length; i++) {
                     var subShape = this.style.shapeList[i];
@@ -147,5 +147,4 @@ define(function (require) {
     };
 
     require('../tool/util').inherits(ShapeBundle, Base);
-    return ShapeBundle;
-}); 
+    module.exports = ShapeBundle;

@@ -38,8 +38,6 @@
  * @property {string} [textBaseline] 默认根据textPosition自动设置，附加文本垂直对齐。
  *                                可以是top, bottom, middle, alphabetic, hanging, ideographic
  */
-define(
-    function (require) {
         var Base = require('./Base');
         var smoothSpline = require('./util/smoothSpline');
         var smoothBezier = require('./util/smoothBezier');
@@ -113,7 +111,7 @@ define(
                             cp1[0], cp1[1], cp2[0], cp2[1], p[0], p[1]
                         );
                     }
-                } 
+                }
                 else {
                     if (style.smooth === 'spline') {
                         pointList = smoothSpline(pointList, true);
@@ -130,9 +128,9 @@ define(
                     else if (style.lineType == 'dashed'
                             || style.lineType == 'dotted'
                     ) {
-                        var dashLength = 
+                        var dashLength =
                             style._dashLength
-                            || (style.lineWidth || 1) 
+                            || (style.lineWidth || 1)
                                * (style.lineType == 'dashed' ? 5 : 1);
                         style._dashLength = dashLength;
                         ctx.moveTo(pointList[0][0], pointList[0][1]);
@@ -146,7 +144,7 @@ define(
                         }
                         dashedLineTo(
                             ctx,
-                            pointList[pointList.length - 1][0], 
+                            pointList[pointList.length - 1][0],
                             pointList[pointList.length - 1][1],
                             pointList[0][0],
                             pointList[0][1],
@@ -168,7 +166,7 @@ define(
                 if (style.__rect) {
                     return style.__rect;
                 }
-                
+
                 var minX =  Number.MAX_VALUE;
                 var maxX =  Number.MIN_VALUE;
                 var minY = Number.MAX_VALUE;
@@ -197,7 +195,7 @@ define(
                 else {
                     lineWidth = 0;
                 }
-                
+
                 style.__rect = {
                     x : Math.round(minX - lineWidth / 2),
                     y : Math.round(minY - lineWidth / 2),
@@ -209,7 +207,4 @@ define(
         };
 
         require('../tool/util').inherits(Polygon, Base);
-        return Polygon;
-    }
-);
-
+        module.exports = Polygon;

@@ -1,4 +1,4 @@
-define(function () {
+
     /**
      * config默认配置项
      * @exports zrender/config
@@ -58,7 +58,7 @@ define(function () {
              * 全局离开，MOUSEOUT触发比较频繁，一次离开优化绑定
              * @type {string}
              */
-            GLOBALOUT : 'globalout',    // 
+            GLOBALOUT : 'globalout',    //
 
             // 一次成功元素拖拽的行为事件过程是：
             // dragstart > dragenter > dragover [> dragleave] > drop > dragend
@@ -115,6 +115,4 @@ define(function () {
         // retina 屏幕优化
         devicePixelRatio: Math.max(window.devicePixelRatio || 1, 1)
     };
-    return config;
-});
-
+    module.exports = config;

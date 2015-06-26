@@ -5,8 +5,6 @@
  *         errorrik (errorrik@gmail.com)
  */
 
-define(
-    function(require) {
         var util = require('../tool/util');
         var TextShape = require('../shape/Text');
         var RectangleShape = require('../shape/Rectangle');
@@ -17,13 +15,13 @@ define(
 
         /**
          * @constructor
-         * 
+         *
          * @param {Object} options 选项
          * @param {color} options.backgroundColor 背景颜色
          * @param {Object} options.textStyle 文字样式，同shape/text.style
          * @param {number=} options.progress 进度参数，部分特效有用
          * @param {Object=} options.effect 特效参数，部分特效有用
-         * 
+         *
          * {
          *     effect,
          *     //loading话术
@@ -45,7 +43,7 @@ define(
 
         /**
          * 创建loading文字图形
-         * 
+         *
          * @param {Object} textStyle 文字style，同shape/text.style
          */
         Base.prototype.createTextShape = function (textStyle) {
@@ -66,10 +64,10 @@ define(
                 )
             });
         };
-        
+
         /**
          * 获取loading背景图形
-         * 
+         *
          * @param {color} color 背景颜色
          */
         Base.prototype.createBackgroundShape = function (color) {
@@ -110,7 +108,7 @@ define(
         Base.prototype.setOptions = function (options) {
             this.options = options || {};
         };
-        
+
         Base.prototype.adjust = function (value, region) {
             if (value <= region[0]) {
                 value = region[0];
@@ -120,7 +118,7 @@ define(
             }
             return value;
         };
-        
+
         Base.prototype.getLocation = function(loc, totalWidth, totalHeight) {
             var x = loc.x != null ? loc.x : 'center';
             switch (x) {
@@ -154,6 +152,4 @@ define(
             };
         };
 
-        return Base;
-    }
-);
+        module.exports = Base;

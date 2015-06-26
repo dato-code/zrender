@@ -3,8 +3,6 @@
  *         pissang(https://github.com/pissang)
  *         errorrik (errorrik@gmail.com)
  */
-define(
-    function (require) {
         var vec2 = require('./vector');
         var curve = require('./curve');
 
@@ -23,7 +21,7 @@ define(
             var right = points[0][0];
             var top = points[0][1];
             var bottom = points[0][1];
-            
+
             for (var i = 1; i < points.length; i++) {
                 var p = points[i];
                 if (p[0] < left) {
@@ -102,18 +100,18 @@ define(
             var ct1 = 1 - t1;
             var ct2 = 1 - t2;
 
-            var x1 = ct1 * ct1 * p0[0] 
-                     + 2 * ct1 * t1 * p1[0] 
+            var x1 = ct1 * ct1 * p0[0]
+                     + 2 * ct1 * t1 * p1[0]
                      + t1 * t1 * p2[0];
-            var y1 = ct1 * ct1 * p0[1] 
-                     + 2 * ct1 * t1 * p1[1] 
+            var y1 = ct1 * ct1 * p0[1]
+                     + 2 * ct1 * t1 * p1[1]
                      + t1 * t1 * p2[1];
 
-            var x2 = ct2 * ct2 * p0[0] 
-                     + 2 * ct2 * t2 * p1[0] 
+            var x2 = ct2 * ct2 * p0[0]
+                     + 2 * ct2 * t2 * p1[0]
                      + t2 * t2 * p2[0];
-            var y2 = ct2 * ct2 * p0[1] 
-                     + 2 * ct2 * t2 * p1[1] 
+            var y2 = ct2 * ct2 * p0[1]
+                     + 2 * ct2 * t2 * p1[1]
                      + t2 * t2 * p2[1];
             min[0] = Math.min(p0[0], p2[0], x1, x2);
             min[1] = Math.min(p0[1], p2[1], y1, y2);
@@ -138,7 +136,7 @@ define(
          */
         var computeArcBoundingBox = function (
             x, y, r, startAngle, endAngle, anticlockwise, min, max
-        ) { 
+        ) {
             if (Math.abs(startAngle - endAngle) >= Math.PI * 2) {
                 // Is a circle
                 min[0] = x - r;
@@ -156,7 +154,7 @@ define(
 
             vec2.min(min, start, end);
             vec2.max(max, start, end);
-            
+
             // Thresh to [0, Math.PI * 2]
             startAngle = startAngle % (Math.PI * 2);
             if (startAngle < 0) {
@@ -195,6 +193,4 @@ define(
         computeBoundingBox.quadraticBezier = computeQuadraticBezierBoundingBox;
         computeBoundingBox.arc = computeArcBoundingBox;
 
-        return computeBoundingBox;
-    }
-);
+        module.exports = computeBoundingBox;

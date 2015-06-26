@@ -8,8 +8,6 @@
  * degreeToRadian：角度转弧度
  * radianToDegree：弧度转角度
  */
-define(
-    function () {
 
         var _radians = Math.PI / 180;
 
@@ -45,11 +43,9 @@ define(
             return angle / _radians;
         }
 
-        return {
+        module.exports = {
             sin : sin,
             cos : cos,
             degreeToRadian : degreeToRadian,
             radianToDegree : radianToDegree
         };
-    }
-);

@@ -3,7 +3,7 @@
  * @module zrender/mixin/Transformable
  * @author pissang (https://www.github.com/pissang)
  */
-define(function (require) {
+
 
     'use strict';
 
@@ -64,7 +64,7 @@ define(function (require) {
     };
 
     Transformable.prototype = {
-        
+
         constructor: Transformable,
 
         updateNeedTransform: function () {
@@ -80,12 +80,12 @@ define(function (require) {
          * 如果有坐标变换, 则从position, rotation, scale以及父节点的transform计算出自身的transform矩阵
          */
         updateTransform: function () {
-            
+
             this.updateNeedTransform();
 
             var parentHasTransform = this.parent && this.parent.needTransform;
             this.needTransform = this.needLocalTransform || parentHasTransform;
-            
+
             if (!this.needTransform) {
                 return;
             }
@@ -245,5 +245,4 @@ define(function (require) {
         }
     };
 
-    return Transformable;
-});
+    module.exports = Transformable;

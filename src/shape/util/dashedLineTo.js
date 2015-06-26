@@ -1,17 +1,15 @@
 /**
- * 虚线lineTo 
+ * 虚线lineTo
  *
  * author:  Kener (@Kener-林峰, kener.linfeng@gmail.com)
  *          errorrik (errorrik@gmail.com)
  */
-define(
-    function (/* require */) {
 
         var dashPattern = [ 5, 5 ];
         /**
-         * 虚线lineTo 
+         * 虚线lineTo
          */
-        return function (ctx, x1, y1, x2, y2, dashLength) {
+        module.exports = function (ctx, x1, y1, x2, y2, dashLength) {
             // http://msdn.microsoft.com/en-us/library/ie/dn265063(v=vs.85).aspx
             if (ctx.setLineDash) {
                 dashPattern[0] = dashPattern[1] = dashLength;
@@ -22,7 +20,7 @@ define(
             }
 
             dashLength = typeof dashLength != 'number'
-                            ? 5 
+                            ? 5
                             : dashLength;
 
             var dx = x2 - x1;
@@ -46,5 +44,3 @@ define(
             }
             ctx.lineTo(x2, y2);
         };
-    }
-);

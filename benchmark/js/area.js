@@ -1,4 +1,4 @@
-define(function(require) {
+
     
     var Benchmark = require('benchmark');
 

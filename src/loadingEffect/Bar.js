@@ -1,6 +1,4 @@
 
-define(
-    function (require) {
         var Base = require('./Base');
         var util = require('../tool/util');
         var zrColor = require('../tool/color');
@@ -11,10 +9,10 @@ define(
         }
         util.inherits(Bar, Base);
 
-        
+
         /**
          * 进度条
-         * 
+         *
          * @param {Object} addShapeHandle
          * @param {Object} refreshHandle
          */
@@ -65,7 +63,7 @@ define(
                 barShape.highlightStyle.width =
                     this.adjust(options.progress, [ 0, 1 ])
                     * options.effectOption.width;
-                    
+
                 addShapeHandle(barShape);
                 addShapeHandle(textShape);
 
@@ -94,6 +92,4 @@ define(
             }
         };
 
-        return Bar;
-    }
-);
+        module.exports = Bar;

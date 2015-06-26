@@ -37,8 +37,6 @@
  * @property {string} [textBaseline] 默认根据textPosition自动设置，附加文本垂直对齐。
  *                                可以是top, bottom, middle, alphabetic, hanging, ideographic
  */
-define(
-    function (require) {
         var Base = require('./Base');
         var smoothSpline = require('./util/smoothSpline');
         var smoothBezier = require('./util/smoothBezier');
@@ -80,12 +78,12 @@ define(
                     // 少于2个点就不画了~
                     return;
                 }
-                
+
                 var len = Math.min(
-                    style.pointList.length, 
+                    style.pointList.length,
                     Math.round(style.pointListLength || style.pointList.length)
                 );
-                
+
                 if (style.smooth && style.smooth !== 'spline') {
                     if (! style.controlPointList) {
                         this.updateControlPoints(style);
@@ -120,7 +118,7 @@ define(
                     else if (style.lineType == 'dashed'
                             || style.lineType == 'dotted'
                     ) {
-                        var dashLength = (style.lineWidth || 1) 
+                        var dashLength = (style.lineWidth || 1)
                                          * (style.lineType == 'dashed' ? 5 : 1);
                         ctx.moveTo(pointList[0][0], pointList[0][1]);
                         for (var i = 1; i < len; i++) {
@@ -153,6 +151,4 @@ define(
         };
 
         require('../tool/util').inherits(Polyline, Base);
-        return Polyline;
-    }
-);
+        module.exports = Polyline;

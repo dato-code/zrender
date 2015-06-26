@@ -1,5 +1,4 @@
-define(
-    function() {
+
         /**
          * 缓动代码来自 https://github.com/sole/tween.js/blob/master/src/Tween.js
          * @see http://sole.github.io/tween.js/examples/03_graphs.html
@@ -206,7 +205,7 @@ define(
              * @return {number}
              */
             ElasticIn: function (k) {
-                var s; 
+                var s;
                 var a = 0.1;
                 var p = 0.4;
                 if (k === 0) {
@@ -343,7 +342,4 @@ define(
             }
         };
 
-        return easing;
-    }
-);
-
+        module.exports = easing;

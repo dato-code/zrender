@@ -2,7 +2,7 @@
  * 颜色辅助模块
  * @module zrender/tool/color
  */
-define(function(require) {
+
     var util = require('../tool/util');
 
     var _ctx;
@@ -294,7 +294,7 @@ define(function(require) {
         for (var i = 0, r = start[0], g = start[1], b = start[2], a = start[3]; i < step; i++) {
             colors[i] = toColor([
                 adjust(Math.floor(r), [ 0, 255 ]),
-                adjust(Math.floor(g), [ 0, 255 ]), 
+                adjust(Math.floor(g), [ 0, 255 ]),
                 adjust(Math.floor(b), [ 0, 255 ]),
                 a.toFixed(4) - 0
             ],'rgba');
@@ -536,7 +536,7 @@ define(function(require) {
 
     /**
      * 转换颜色名
-     * 
+     *
      * @param {string} color 颜色
      * @return {string} 颜色名
      */
@@ -551,7 +551,7 @@ define(function(require) {
 
     /**
      * 移除颜色中多余空格
-     * 
+     *
      * @param {string} color 颜色
      * @return {string} 无空格颜色
      */
@@ -648,7 +648,7 @@ define(function(require) {
         if (!isCalculableColor(color1) || !isCalculableColor(color2)) {
             return color1;
         }
-        
+
         if (typeof weight === 'undefined') {
             weight = 0.5;
         }
@@ -681,7 +681,7 @@ define(function(require) {
 
     /**
      * 随机颜色
-     * 
+     *
      * @return {string} 颜色值，#rrggbb格式
      */
     function random() {
@@ -814,7 +814,7 @@ define(function(require) {
         }
         return value;
     }
-    
+
     function isCalculableColor(color) {
         return color instanceof Array || typeof color === 'string';
     }
@@ -825,7 +825,7 @@ define(function(require) {
         var S = data[1];
         var V = data[2];
         // HSV from 0 to 1
-        var R; 
+        var R;
         var G;
         var B;
         if (S === 0) {
@@ -1039,7 +1039,7 @@ define(function(require) {
         return [ H, S, L ];
     }
 
-    return {
+    module.exports = {
         customPalette : customPalette,
         resetPalette : resetPalette,
         getColor : getColor,
@@ -1070,5 +1070,3 @@ define(function(require) {
         alpha : alpha,
         getData : getData
     };
-});
-

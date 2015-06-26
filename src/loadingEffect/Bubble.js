@@ -1,6 +1,4 @@
 
-define(
-    function (require) {
         var Base = require('./Base');
         var util = require('../tool/util');
         var zrColor = require('../tool/color');
@@ -18,7 +16,7 @@ define(
          * @param {Object} refreshHandle
          */
         Bubble.prototype._start = function (addShapeHandle, refreshHandle) {
-            
+
             // 特效默认配置
             var options = util.merge(
                 this.options,
@@ -48,7 +46,7 @@ define(
             var shapeList = [];
             var canvasWidth = this.canvasWidth;
             var canvasHeight = this.canvasHeight;
-            
+
             // 初始化动画元素
             for (var i = 0; i < n; i++) {
                 var color = effectOption.color == 'random'
@@ -68,11 +66,11 @@ define(
                     animationY : Math.ceil(Math.random() * 20)
                 });
             }
-            
+
             return setInterval(
                 function () {
                     addShapeHandle(background);
-                    
+
                     for (var i = 0; i < n; i++) {
                         var style = shapeList[i].highlightStyle;
 
@@ -95,6 +93,4 @@ define(
             );
         };
 
-        return Bubble;
-    }
-);
+        module.exports = Bubble;

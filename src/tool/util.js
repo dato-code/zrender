@@ -3,9 +3,6 @@
  * @author Kener (@Kener-林峰, kener.linfeng@gmail.com)
  *         Yi Shen(https://github.com/pissang)
  */
-define(
-    function(require) {
-
         var ArrayProto = Array.prototype;
         var nativeForEach = ArrayProto.forEach;
         var nativeMap = ArrayProto.map;
@@ -94,7 +91,7 @@ define(
             for (var i in source) {
                 mergeItem(target, source, i, overwrite);
             }
-            
+
             return target;
         }
 
@@ -235,13 +232,13 @@ define(
         }
 
         function bind(func, context) {
-            
+
             return function () {
                 func.apply(context, arguments);
             }
         }
 
-        return {
+        module.exports = {
             inherits: inherits,
             clone: clone,
             merge: merge,
@@ -252,5 +249,3 @@ define(
             filter: filter,
             bind: bind
         };
-    }
-);

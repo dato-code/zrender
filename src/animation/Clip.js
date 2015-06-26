@@ -10,9 +10,6 @@
  * @config ondestroy(optional)
  * @config onrestart(optional)
  */
-define(
-    function(require) {
-
         var Easing = require('./easing');
 
         function Clip(options) {
@@ -73,13 +70,13 @@ define(
                         // 抛出而不是直接调用事件直到 stage.update 后再统一调用这些事件
                         return 'restart';
                     }
-                    
+
                     // 动画完成将这个控制器标识为待删除
                     // 在Animation.update中进行批量删除
                     this._needsRemove = true;
                     return 'destroy';
                 }
-                
+
                 return null;
             },
             restart : function() {
@@ -99,6 +96,4 @@ define(
             constructor: Clip
         };
 
-        return Clip;
-    }
-);
+        module.exports = Clip;

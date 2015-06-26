@@ -8,8 +8,6 @@
  * isOutside：是否在区域外部
  * getTextWidth：测算单行文本宽度
  */
-define(
-    function (require) {
 
         'use strict';
 
@@ -17,13 +15,13 @@ define(
         var curve = require('./curve');
 
         var _ctx;
-        
+
         var _textWidthCache = {};
         var _textHeightCache = {};
         var _textWidthCacheCounter = 0;
         var _textHeightCacheCounter = 0;
         var TEXT_CACHE_MAX = 5000;
-            
+
         var PI2 = Math.PI * 2;
 
         function normalizeRadian(angle) {
@@ -95,15 +93,15 @@ define(
                     if (typeof(area.cpX2) === 'undefined') {
                         return isInsideQuadraticStroke(
                             area.xStart, area.yStart,
-                            area.cpX1, area.cpY1, 
+                            area.cpX1, area.cpY1,
                             area.xEnd, area.yEnd,
                             area.lineWidth, x, y
                         );
                     }
                     return isInsideCubicStroke(
                         area.xStart, area.yStart,
-                        area.cpX1, area.cpY1, 
-                        area.cpX2, area.cpY2, 
+                        area.cpX1, area.cpY1,
+                        area.cpX2, area.cpY2,
                         area.xEnd, area.yEnd,
                         area.lineWidth, x, y
                     );
@@ -354,7 +352,7 @@ define(
             if (startAngle > endAngle) {
                 endAngle += PI2;
             }
-            
+
             var angle = Math.atan2(y, x);
             if (angle < 0) {
                 angle += PI2;
@@ -490,19 +488,19 @@ define(
                         // 分成三段单调函数
                         if (t < extrema[0]) {
                             w += y0_ < y0 ? 1 : -1;
-                        } 
+                        }
                         else if (t < extrema[1]) {
                             w += y1_ < y0_ ? 1 : -1;
-                        } 
+                        }
                         else {
                             w += y3 < y1_ ? 1 : -1;
                         }
-                    } 
+                    }
                     else {
                         // 分成两段单调函数
                         if (t < extrema[0]) {
                             w += y0_ < y0 ? 1 : -1;
-                        } 
+                        }
                         else {
                             w += y3 < y0_ ? 1 : -1;
                         }
@@ -523,7 +521,7 @@ define(
             var nRoots = curve.quadraticRootAt(y0, y1, y2, y, roots);
             if (nRoots === 0) {
                 return 0;
-            } 
+            }
             else {
                 var t = curve.quadraticExtremum(y0, y1, y2);
                 if (t >=0 && t <= 1) {
@@ -536,13 +534,13 @@ define(
                         }
                         if (roots[i] < t) {
                             w += y_ < y0 ? 1 : -1;
-                        } 
+                        }
                         else {
                             w += y2 < y_ ? 1 : -1;
                         }
                     }
                     return w;
-                } 
+                }
                 else {
                     var x_ = curve.quadraticAt(x0, x1, x2, roots[0]);
                     if (x_ < x) {
@@ -552,7 +550,7 @@ define(
                 }
             }
         }
-        
+
         // TODO
         // Arc 旋转
         function windingArc(
@@ -581,10 +579,10 @@ define(
             if (anticlockwise) {
                 var tmp = startAngle;
                 startAngle = normalizeRadian(endAngle);
-                endAngle = normalizeRadian(tmp);   
+                endAngle = normalizeRadian(tmp);
             } else {
                 startAngle = normalizeRadian(startAngle);
-                endAngle = normalizeRadian(endAngle);   
+                endAngle = normalizeRadian(endAngle);
             }
             if (startAngle > endAngle) {
                 endAngle += PI2;
@@ -784,7 +782,7 @@ define(
             if (textFont) {
                 _ctx.font = textFont;
             }
-            
+
             text = (text + '').split('\n');
             var width = 0;
             for (var i = 0, l = text.length; i < l; i++) {
@@ -801,10 +799,10 @@ define(
                 _textWidthCacheCounter = 0;
                 _textWidthCache = {};
             }
-            
+
             return width;
         }
-        
+
         /**
          * 测算多行文本高度
          * @param {Object} text
@@ -815,14 +813,14 @@ define(
             if (_textHeightCache[key]) {
                 return _textHeightCache[key];
             }
-            
+
             _ctx = _ctx || util.getContext();
 
             _ctx.save();
             if (textFont) {
                 _ctx.font = textFont;
             }
-            
+
             text = (text + '').split('\n');
             // 比较粗暴
             var height = (_ctx.measureText('国').width + 2) * text.length;
@@ -838,7 +836,7 @@ define(
             return height;
         }
 
-        return {
+        module.exports = {
             isInside : isInside,
             isOutside : isOutside,
             getTextWidth : getTextWidth,
@@ -855,5 +853,3 @@ define(
             isInsideCubicStroke: isInsideCubicStroke,
             isInsideQuadraticStroke: isInsideQuadraticStroke
         };
-    }
-);

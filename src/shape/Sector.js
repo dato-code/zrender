@@ -12,7 +12,7 @@
  *             r0: 30,
  *             startAngle: 0,
  *             endEngle: 180
- *         } 
+ *         }
  *     });
  *     zr.addShape(shape);
  */
@@ -46,14 +46,11 @@
  *                                可以是top, bottom, middle, alphabetic, hanging, ideographic
  */
 
-define(
-    function (require) {
-
         var math = require('../tool/math');
         var computeBoundingBox = require('../tool/computeBoundingBox');
         var vec2 = require('../tool/vector');
         var Base = require('./Base');
-        
+
         var min0 = vec2.create();
         var min1 = vec2.create();
         var max0 = vec2.create();
@@ -142,7 +139,7 @@ define(
                 if (style.__rect) {
                     return style.__rect;
                 }
-                
+
                 var x = style.x;   // 圆心x
                 var y = style.y;   // 圆心y
                 var r0 = style.r0 || 0;     // 形内半径[0,r)
@@ -159,7 +156,7 @@ define(
                 if (r0 > 1) {
                     computeBoundingBox.arc(
                         x, y, r0, startAngle, endAngle, !clockWise, min0, max0
-                    );   
+                    );
                 } else {
                     min0[0] = max0[0] = x;
                     min0[1] = max0[1] = y;
@@ -182,6 +179,4 @@ define(
 
 
         require('../tool/util').inherits(Sector, Base);
-        return Sector;
-    }
-);
+        module.exports = Sector;

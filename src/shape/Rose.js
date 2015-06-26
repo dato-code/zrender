@@ -43,10 +43,8 @@
  *                                可以是top, bottom, middle, alphabetic, hanging, ideographic
  */
 
-define(
-    function (require) {
         var Base = require('./Base');
-        
+
         /**
          * @alias module:zrender/shape/Rose
          * @constructor
@@ -116,7 +114,7 @@ define(
                 if (style.__rect) {
                     return style.__rect;
                 }
-                
+
                 var _R = style.r;
                 var _offsetX = style.x;
                 var _offsetY = style.y;
@@ -145,8 +143,6 @@ define(
                 return style.__rect;
             }
         };
-        
+
         require('../tool/util').inherits(Rose, Base);
-        return Rose;
-    }
-);
+        module.exports = Rose;

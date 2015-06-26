@@ -15,7 +15,7 @@
  *           strokeColor: 'red',
  *           lineWidth: 3,
  *           text: 'Droplet'
- *       }    
+ *       }
  *   });
  *   zr.addShape(shape);
  */
@@ -45,8 +45,6 @@
  * @property {string} [textBaseline] 默认根据textPosition自动设置，附加文本垂直对齐。
  *                                可以是top, bottom, middle, alphabetic, hanging, ideographic
  */
-define(
-    function (require) {
         'use strict';
 
         var Base = require('./Base');
@@ -125,7 +123,7 @@ define(
                 var originPos = this.transformCoordToLocal(x, y);
                 x = originPos[0];
                 y = originPos[1];
-                
+
                 if (this.isCoverRect(x, y)) {
                     return area.isInsidePath(
                         this._pathProxy.pathCommands, this.style.lineWidth, this.style.brushType, x, y
@@ -135,6 +133,4 @@ define(
         };
 
         require('../tool/util').inherits(Droplet, Base);
-        return Droplet;
-    }
-);
+        module.exports = Droplet;

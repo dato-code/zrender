@@ -11,7 +11,7 @@
 //   http://dev.w3.org/html5/spec/the-canvas-element.html
 
 // If the browser is IE and does not support HTML5 Canvas
-define(function (require) {
+
     if (window["ActiveXObject"] && !window["CanvasRenderingContext2D"]) {
     /*
      * Constant
@@ -32,7 +32,7 @@ define(function (require) {
 
     var config   = window[FLASH_CANVAS + "Options"] || {};
     var BASE_URL = config["swfPath"] || getScriptUrl().replace(/[^\/]+$/, "");
-    
+
     var SWF_URL  = BASE_URL + "flashcanvas.swf";
 
     // DOMException code
@@ -1188,4 +1188,3 @@ define(function (require) {
     ];
 
     }
-});

@@ -3,9 +3,6 @@
  * @module zrender/tool/event
  * @author Kener (@Kener-林峰, kener.linfeng@gmail.com)
  */
-define(
-    function(require) {
-
         'use strict';
 
         var Eventful = require('../mixin/Eventful');
@@ -64,8 +61,8 @@ define(
                 e.returnValue = false;
                 e.cancelBubble = true;
             };
-        
-        return {
+
+        module.exports = {
             getX : getX,
             getY : getY,
             getDelta : getDelta,
@@ -73,5 +70,3 @@ define(
             // 做向上兼容
             Dispatcher : Eventful
         };
-    }
-);

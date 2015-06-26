@@ -1,4 +1,4 @@
-define(function (require) {
+
 
     var CircleShape = require('zrender/shape/Circle');
     var LineShape = require('zrender/shape/Line');

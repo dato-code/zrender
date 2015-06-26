@@ -1,7 +1,7 @@
 /**
  * @module zrender/tool/http
  */
-define(function(require) {
+
     /**
      * @typedef {Object} IHTTPGetOption
      * @property {string} url
@@ -49,7 +49,6 @@ define(function(require) {
         /* jshint ignore:end */
     }
 
-    return {
+    module.exports = {
         get: get
     };
-});

@@ -1,12 +1,11 @@
-define(
-    function (require) {
+
         var config = require('../config');
 
         /**
          * @exports zrender/tool/log
          * @author Kener (@Kener-林峰, kener.linfeng@gmail.com)
          */
-        return function() {
+        module.exports = function() {
             if (config.debugMode === 0) {
                 return;
             }
@@ -26,9 +25,7 @@ define(
         return function(mes) {
             document.getElementById('wrong-message').innerHTML =
                 mes + ' ' + (new Date() - 0)
-                + '<br/>' 
+                + '<br/>'
                 + document.getElementById('wrong-message').innerHTML;
         };
         */
-    }
-);

@@ -1,7 +1,7 @@
 /**
  * 矩形
  * @module zrender/shape/Rectangle
- * @author Kener (@Kener-林峰, kener.linfeng@gmail.com) , 
+ * @author Kener (@Kener-林峰, kener.linfeng@gmail.com) ,
  *         strwind (@劲风FEI)
  * @example
  *     var Rectangle = require('zrender/shape/Rectangle');
@@ -43,10 +43,9 @@
  * @property {string} [textBaseline] 默认根据textPosition自动设置，附加文本垂直对齐。
  *                                可以是top, bottom, middle, alphabetic, hanging, ideographic
  */
-define(
-    function (require) {
+
         var Base = require('./Base');
-        
+
         /**
          * @alias module:zrender/shape/Rectangle
          * @constructor
@@ -81,11 +80,11 @@ define(
                 var width = style.width;
                 var height = style.height;
                 var r = style.radius;
-                var r1; 
-                var r2; 
-                var r3; 
+                var r1;
+                var r2;
+                var r3;
                 var r4;
-                  
+
                 if (typeof r === 'number') {
                     r1 = r2 = r3 = r4 = r;
                 }
@@ -112,7 +111,7 @@ define(
                 else {
                     r1 = r2 = r3 = r4 = 0;
                 }
-                
+
                 var total;
                 if (r1 + r2 > width) {
                     total = r1 + r2;
@@ -150,7 +149,7 @@ define(
                 ctx.lineTo(x, y + r1);
                 r1 !== 0 && ctx.quadraticCurveTo(x, y, x + r1, y);
             },
-            
+
             /**
              * 创建矩形路径
              * @param {CanvasRenderingContext2D} ctx
@@ -181,7 +180,7 @@ define(
                 if (style.__rect) {
                     return style.__rect;
                 }
-                
+
                 var lineWidth;
                 if (style.brushType == 'stroke' || style.brushType == 'fill') {
                     lineWidth = style.lineWidth || 1;
@@ -195,12 +194,10 @@ define(
                     width : style.width + lineWidth,
                     height : style.height + lineWidth
                 };
-                
+
                 return style.__rect;
             }
         };
 
         require('../tool/util').inherits(Rectangle, Base);
-        return Rectangle;
-    }
-);
+        module.exports = Rectangle;

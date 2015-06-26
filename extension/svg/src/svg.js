@@ -1,6 +1,4 @@
 // http://www.w3.org/TR/SVG/
-define(function(require) {
-    
     'use strict';
 
     var http = require('zrender/tool/http');
@@ -624,8 +622,7 @@ define(function(require) {
         }
     }
 
-    return {
+    module.exports = {
         parse: parse,
         load: load
     };
-});

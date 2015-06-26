@@ -17,7 +17,7 @@
  *     }));
  *     zr.addGroup(g);
  */
-define(function(require) {
+
 
     var guid = require('./tool/guid');
     var util = require('./tool/util');
@@ -102,7 +102,7 @@ define(function(require) {
         if (child == this) {
             return;
         }
-        
+
         if (child.parent == this) {
             return;
         }
@@ -114,7 +114,7 @@ define(function(require) {
         child.parent = this;
 
         if (this._storage && this._storage !== child._storage) {
-            
+
             this._storage.addToMap(child);
 
             if (child instanceof Group) {
@@ -137,7 +137,7 @@ define(function(require) {
         child.parent = null;
 
         if (this._storage) {
-            
+
             this._storage.delFromMap(child.id);
 
             if (child instanceof Group) {
@@ -227,5 +227,4 @@ define(function(require) {
     util.merge(Group.prototype, Transformable.prototype, true);
     util.merge(Group.prototype, Eventful.prototype, true);
 
-    return Group;
-});
+    module.exports = Group;
