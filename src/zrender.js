@@ -1,14 +1,12 @@
 /*!
  * ZRender, a high performance canvas library.
- *  
+ *
  * Copyright (c) 2013, Baidu Inc.
  * All rights reserved.
- * 
+ *
  * LICENSE
  * https://github.com/ecomfe/zrender/blob/master/LICENSE.txt
  */
-define(
-    function(require) {
         /*
          * HTML5 Canvas for Internet Explorer!
          * Modern browsers like Firefox, Safari, Chrome and Opera support
@@ -274,7 +272,7 @@ define(
 
         /**
          * 修改指定zlevel的绘制配置项
-         * 
+         *
          * @param {string} zLevel
          * @param {Object} config 配置对象
          * @param {string} [config.clearColor=0] 每次清空画布的颜色
@@ -295,7 +293,7 @@ define(
 
         /**
          * 添加额外高亮层显示，仅提供添加方法，每次刷新后高亮层图形均被清空
-         * 
+         *
          * @param {Object} shape 形状对象
          */
         ZRender.prototype.addHoverShape = function (shape) {
@@ -305,7 +303,7 @@ define(
 
         /**
          * 渲染
-         * 
+         *
          * @param {Function} callback  渲染结束后回调函数
          */
         ZRender.prototype.render = function (callback) {
@@ -316,7 +314,7 @@ define(
 
         /**
          * 视图更新
-         * 
+         *
          * @param {Function} callback  视图更新后回调函数
          */
         ZRender.prototype.refresh = function (callback) {
@@ -332,7 +330,7 @@ define(
             this._needsRefreshNextFrame = true;
             return this;
         };
-        
+
         /**
          * 绘制高亮层
          * @param {Function} callback  视图更新后回调函数
@@ -344,7 +342,7 @@ define(
 
         /**
          * 视图更新
-         * 
+         *
          * @param {Array.<module:zrender/shape/Base>} shapeList 需要更新的图形列表
          * @param {Function} callback  视图更新后回调函数
          */
@@ -363,7 +361,7 @@ define(
 
         /**
          * 动画
-         * 
+         *
          * @param {string|module:zrender/Group|module:zrender/shape/Base} el 动画对象
          * @param {string} path 需要添加动画的属性获取路径，可以通过a.b.c来获取深层的属性
          * @param {boolean} [loop] 动画是否循环
@@ -460,7 +458,7 @@ define(
 
         /**
          * loading显示
-         * 
+         *
          * @param {Object=} loadingEffect loading效果对象
          */
         ZRender.prototype.showLoading = function (loadingEffect) {
@@ -513,7 +511,7 @@ define(
 
         /**
          * 事件绑定
-         * 
+         *
          * @param {string} eventName 事件名称
          * @param {Function} eventHandler 响应函数
          * @param {Object} [context] 响应函数
@@ -525,7 +523,7 @@ define(
 
         /**
          * 事件解绑定，参数为空则解绑所有自定义事件
-         * 
+         *
          * @param {string} eventName 事件名称
          * @param {Function} eventHandler 响应函数
          */
@@ -533,10 +531,10 @@ define(
             this.handler.un(eventName, eventHandler);
             return this;
         };
-        
+
         /**
          * 事件触发
-         * 
+         *
          * @param {string} eventName 事件名称，resize，hover，drag，etc
          * @param {event=} event event dom事件对象
          */
@@ -544,7 +542,7 @@ define(
             this.handler.trigger(eventName, event);
             return this;
         };
-        
+
 
         /**
          * 清除当前ZRender下所有类图的数据和显示，clear后MVC和已绑定事件均还存在在，ZRender可用
@@ -560,21 +558,19 @@ define(
          */
         ZRender.prototype.dispose = function () {
             this.animation.stop();
-            
+
             this.clear();
             this.storage.dispose();
             this.painter.dispose();
             this.handler.dispose();
 
-            this.animation = 
-            this.storage = 
-            this.painter = 
+            this.animation =
+            this.storage =
+            this.painter =
             this.handler = null;
 
             // 释放后告诉全局删除对自己的索引，没想到啥好方法
             zrender.delInstance(this.id);
         };
 
-        return zrender;
-    }
-);
+        module.exports = zrender;

@@ -2,7 +2,7 @@
  * @module zrender/Layer
  * @author pissang(https://www.github.com/pissang)
  */
-define(function (require) {
+
 
     var Transformable = require('./mixin/Transformable');
     var util = require('./tool/util');
@@ -15,7 +15,7 @@ define(function (require) {
 
     /**
      * 创建dom
-     * 
+     *
      * @inner
      * @param {string} id dom id 待用
      * @param {string} type dom type，such as canvas, div etc.
@@ -117,7 +117,7 @@ define(function (require) {
         this.ctx = this.dom.getContext('2d');
 
         var dpr = config.devicePixelRatio;
-        if (dpr != 1) { 
+        if (dpr != 1) {
             this.ctx.scale(dpr, dpr);
         }
     };
@@ -131,7 +131,7 @@ define(function (require) {
 
         var dpr = config.devicePixelRatio;
 
-        if (dpr != 1) { 
+        if (dpr != 1) {
             this.ctxBack.scale(dpr, dpr);
         }
     };
@@ -149,7 +149,7 @@ define(function (require) {
         this.dom.setAttribute('width', width * dpr);
         this.dom.setAttribute('height', height * dpr);
 
-        if (dpr != 1) { 
+        if (dpr != 1) {
             this.ctx.scale(dpr, dpr);
         }
 
@@ -157,7 +157,7 @@ define(function (require) {
             this.domBack.setAttribute('width', width * dpr);
             this.domBack.setAttribute('height', height * dpr);
 
-            if (dpr != 1) { 
+            if (dpr != 1) {
                 this.ctxBack.scale(dpr, dpr);
             }
         }
@@ -175,13 +175,13 @@ define(function (require) {
         var haveClearColor = this.clearColor && !vmlCanvasManager;
         var haveMotionBLur = this.motionBlur && !vmlCanvasManager;
         var lastFrameAlpha = this.lastFrameAlpha;
-        
+
         var dpr = config.devicePixelRatio;
 
         if (haveMotionBLur) {
             if (!this.domBack) {
                 this.createBackBuffer();
-            } 
+            }
 
             this.ctxBack.globalCompositeOperation = 'copy';
             this.ctxBack.drawImage(
@@ -210,5 +210,4 @@ define(function (require) {
 
     util.merge(Layer.prototype, Transformable.prototype);
 
-    return Layer;
-});
+    module.exports = Layer;

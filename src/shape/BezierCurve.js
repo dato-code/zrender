@@ -48,12 +48,10 @@
  *                                可以是top, bottom, middle, alphabetic, hanging, ideographic
  */
 
-define(
-    function (require) {
         'use strict';
 
         var Base = require('./Base');
-        
+
         /**
          * @alias module:zrender/shape/BezierCurve
          * @constructor
@@ -113,7 +111,7 @@ define(
                 if (style.__rect) {
                     return style.__rect;
                 }
-                
+
                 var _minX = Math.min(style.xStart, style.xEnd, style.cpX1);
                 var _minY = Math.min(style.yStart, style.yEnd, style.cpY1);
                 var _maxX = Math.max(style.xStart, style.xEnd, style.cpX1);
@@ -137,12 +135,10 @@ define(
                     width : _maxX - _minX + lineWidth,
                     height : _maxY - _minY + lineWidth
                 };
-                
+
                 return style.__rect;
             }
         };
 
         require('../tool/util').inherits(BezierCurve, Base);
-        return BezierCurve;
-    }
-);
+        module.exports = BezierCurve;

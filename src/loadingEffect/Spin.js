@@ -1,6 +1,4 @@
 
-define(
-    function (require) {
         var Base = require('./Base');
         var util = require('../tool/util');
         var zrColor = require('../tool/color');
@@ -14,7 +12,7 @@ define(
 
         /**
          * 旋转
-         * 
+         *
          * @param {Object} addShapeHandle
          * @param {Object} refreshHandle
          */
@@ -30,7 +28,7 @@ define(
                 }
             );
             var textShape = this.createTextShape(options.textStyle);
-            
+
             var textGap = 10;
             var textWidth = zrArea.getTextWidth(
                 textShape.highlightStyle.text, textShape.highlightStyle.textFont
@@ -38,7 +36,7 @@ define(
             var textHeight = zrArea.getTextHeight(
                 textShape.highlightStyle.text, textShape.highlightStyle.textFont
             );
-            
+
             // 特效默认配置
             var effectOption =  util.merge(
                 this.options.effect || {},
@@ -50,7 +48,7 @@ define(
                     timeInterval : 100
                 }
             );
-            
+
             var location = this.getLocation(
                 this.options.textStyle,
                 textWidth + textGap + effectOption.r * 2,
@@ -59,7 +57,7 @@ define(
             effectOption.x = location.x + effectOption.r;
             effectOption.y = textShape.highlightStyle.y = location.y + location.height / 2;
             textShape.highlightStyle.x = effectOption.x + effectOption.r + textGap;
-            
+
             var background = this.createBackgroundShape(options.backgroundColor);
             var n = effectOption.n;
             var x = effectOption.x;
@@ -104,6 +102,4 @@ define(
             );
         };
 
-        return Spin;
-    }
-);
+        module.exports = Spin;

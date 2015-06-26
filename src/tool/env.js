@@ -5,7 +5,6 @@
  * @author firede[firede@firede.us]
  * @desc thanks zepto.
  */
-define(function() {
     // Zepto.js
     // (c) 2010-2013 Thomas Fuchs
     // Zepto.js may be freely distributed under the MIT license.
@@ -76,5 +75,4 @@ define(function() {
         };
     }
 
-    return detect(navigator.userAgent);
-});
+    module.exports = detect(navigator.userAgent);

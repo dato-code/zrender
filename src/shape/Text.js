@@ -35,11 +35,9 @@
  * @property {number} [shadowOffsetY=0] 阴影纵向偏移
  */
 
-define(
-    function (require) {
         var area = require('../tool/area');
         var Base = require('./Base');
-        
+
         /**
          * @alias module:zrender/shape/Text
          * @constructor
@@ -71,7 +69,7 @@ define(
                         style, this.highlightStyle || {}
                     );
                 }
-                
+
                 if (typeof(style.text) == 'undefined' || style.text === false) {
                     return;
                 }
@@ -104,7 +102,7 @@ define(
                 else {
                     y = rect.y + lineHeight / 2;
                 }
-                
+
                 for (var i = 0, l = text.length; i < l; i++) {
                     if (style.maxWidth) {
                         switch (style.brushType) {
@@ -169,10 +167,10 @@ define(
                 if (style.__rect) {
                     return style.__rect;
                 }
-                
+
                 var width = area.getTextWidth(style.text, style.textFont);
                 var height = area.getTextHeight(style.text, style.textFont);
-                
+
                 var textX = style.x;                 // 默认start == left
                 if (style.textAlign == 'end' || style.textAlign == 'right') {
                     textX -= width;
@@ -199,13 +197,10 @@ define(
                     width : width,
                     height : height
                 };
-                
+
                 return style.__rect;
             }
         };
 
         require('../tool/util').inherits(Text, Base);
-        return Text;
-    }
-);
-
+        module.exports = Text;

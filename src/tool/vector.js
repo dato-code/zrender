@@ -1,5 +1,4 @@
-define(
-    function () {
+
         var ArrayCtor = typeof Float32Array === 'undefined'
             ? Array
             : Float32Array;
@@ -230,7 +229,7 @@ define(
                 out[1] = v1[1] + t * (v2[1] - v1[1]);
                 return out;
             },
-            
+
             /**
              * 矩阵左乘向量
              * @param {Vector2} out
@@ -272,7 +271,5 @@ define(
         vector.lengthSquare = vector.lenSquare;
         vector.dist = vector.distance;
         vector.distSquare = vector.distanceSquare;
-        
-        return vector;
-    }
-);
+
+        module.exports = vector;

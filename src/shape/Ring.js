@@ -40,10 +40,9 @@
  * @property {string} [textBaseline] 默认根据textPosition自动设置，附加文本垂直对齐。
  *                                可以是top, bottom, middle, alphabetic, hanging, ideographic
  */
-define(
-    function (require) {
+
         var Base = require('./Base');
-        
+
         /**
          * @alias module:zrender/shape/Ring
          * @constructor
@@ -89,7 +88,7 @@ define(
                 if (style.__rect) {
                     return style.__rect;
                 }
-                
+
                 var lineWidth;
                 if (style.brushType == 'stroke' || style.brushType == 'fill') {
                     lineWidth = style.lineWidth || 1;
@@ -103,12 +102,10 @@ define(
                     width : style.r * 2 + lineWidth,
                     height : style.r * 2 + lineWidth
                 };
-                
+
                 return style.__rect;
             }
         };
 
         require('../tool/util').inherits(Ring, Base);
-        return Ring;
-    }
-);
+        module.exports = Ring;

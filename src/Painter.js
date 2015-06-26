@@ -5,8 +5,7 @@
  *         errorrik (errorrik@gmail.com)
  *         pissang (https://www.github.com/pissang)
  */
- define(
-    function (require) {
+
         'use strict';
 
         var config = require('./config');
@@ -30,7 +29,7 @@
             if (!layer) {
                 return false;
             }
-            
+
             if (layer.isBuildin) {
                 return true;
             }
@@ -94,7 +93,7 @@
             this._bgDom = document.createElement('div');
             this._bgDom.style.cssText = [
                 'position:absolute;left:0px;top:0px;width:',
-                this._width, 'px;height:', this._height + 'px;', 
+                this._width, 'px;height:', this._height + 'px;',
                 '-webkit-user-select:none;user-select;none;',
                 '-webkit-touch-callout:none;'
             ].join('');
@@ -121,7 +120,7 @@
 
         /**
          * 首次绘图，创建各种dom和context
-         * 
+         *
          * @param {Function} callback 绘画结束后的回调函数
          */
         Painter.prototype.render = function (callback) {
@@ -175,7 +174,7 @@
                 layer.clear();
             }
         };
- 
+
         Painter.prototype._paintList = function (list, paintAll) {
 
             if (typeof(paintAll) == 'undefined') {
@@ -373,7 +372,7 @@
         };
 
         Painter.prototype._updateLayerStatus = function (list) {
-            
+
             var layers = this._layers;
 
             var elCounts = {};
@@ -422,7 +421,7 @@
 
         /**
          * 设置loading特效
-         * 
+         *
          * @param {Object} loadingEffect loading特效
          * @return {Painter}
          */
@@ -445,7 +444,7 @@
 
         /**
          * 修改指定zlevel的绘制参数
-         * 
+         *
          * @param {string} zlevel
          * @param {Object} config 配置对象
          * @param {string} [config.clearColor=0] 每次清空画布的颜色
@@ -525,7 +524,7 @@
 
         /**
          * 显示loading
-         * 
+         *
          * @param {Object=} loadingEffect loading效果对象
          */
         Painter.prototype.showLoading = function (loadingEffect) {
@@ -610,7 +609,7 @@
             this.root =
             this.storage =
 
-            this._domRoot = 
+            this._domRoot =
             this._layers = null;
         };
 
@@ -632,11 +631,11 @@
             var imageLayer = new Layer('image', this);
             this._bgDom.appendChild(imageLayer.dom);
             imageLayer.initContext();
-            
+
             var ctx = imageLayer.ctx;
             imageLayer.clearColor = backgroundColor || '#fff';
             imageLayer.clear();
-            
+
             var self = this;
             // 升序遍历，shape上的zlevel指定绘画图层的z轴层叠
 
@@ -667,7 +666,7 @@
                 },
                 { normal: 'up', update: true }
             );
-            var image = imageLayer.dom.toDataURL(type, args); 
+            var image = imageLayer.dom.toDataURL(type, args);
             ctx = null;
             this._bgDom.removeChild(imageLayer.dom);
             return image;
@@ -744,7 +743,7 @@
         ) {
             var canvas = document.createElement('canvas');
             var ctx = canvas.getContext('2d');
-            
+
             canvas.style.width = width + 'px';
             canvas.style.height = height + 'px';
             canvas.setAttribute('width', width * devicePixelRatio);
@@ -803,6 +802,4 @@
             };
         };
 
-        return Painter;
-    }
-);
+        module.exports = Painter;

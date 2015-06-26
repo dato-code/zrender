@@ -43,10 +43,9 @@
  * @property {string} [textBaseline] 默认根据textPosition自动设置，附加文本垂直对齐。
  *                                可以是top, bottom, middle, alphabetic, hanging, ideographic
  */
-define(
-    function (require) {
+
         var Base = require('./Base');
-        
+
         /**
          * @alias module:zrender/shape/Trochold
          * @param {Object} options
@@ -137,7 +136,7 @@ define(
                 if (style.__rect) {
                     return style.__rect;
                 }
-                
+
                 var _R = style.r;
                 var _r = style.r0;
                 var _d = style.d;
@@ -164,6 +163,4 @@ define(
         };
 
         require('../tool/util').inherits(Trochoid, Base);
-        return Trochoid;
-    }
-);
+        module.exports = Trochoid;

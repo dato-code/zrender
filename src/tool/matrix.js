@@ -1,5 +1,3 @@
-define(
-    function () {
 
         var ArrayCtor = typeof Float32Array === 'undefined'
             ? Array
@@ -16,7 +14,7 @@ define(
             create : function() {
                 var out = new ArrayCtor(6);
                 matrix.identity(out);
-                
+
                 return out;
             },
             /**
@@ -123,7 +121,7 @@ define(
              * @param {Float32Array|Array.<number>} a
              */
             invert : function(out, a) {
-            
+
                 var aa = a[0];
                 var ac = a[2];
                 var atx = a[4];
@@ -147,6 +145,4 @@ define(
             }
         };
 
-        return matrix;
-    }
-);
+        module.exports = matrix;

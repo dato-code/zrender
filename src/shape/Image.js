@@ -39,8 +39,6 @@
  * @property {string} [textBaseline] 默认根据textPosition自动设置，附加文本垂直对齐。
  *                                可以是top, bottom, middle, alphabetic, hanging, ideographic
  */
-define(
-    function (require) {
 
         var Base = require('./Base');
 
@@ -65,7 +63,7 @@ define(
         };
 
         ZImage.prototype = {
-            
+
             type: 'image',
 
             brush : function(ctx, isHighlight, refreshNextFrame) {
@@ -196,6 +194,4 @@ define(
         };
 
         require('../tool/util').inherits(ZImage, Base);
-        return ZImage;
-    }
-);
+        module.exports = ZImage;

@@ -1,10 +1,10 @@
 /**
  * Path 代理，可以在`buildPath`中用于替代`ctx`, 会保存每个path操作的命令到pathCommands属性中
  * 可以用于 isInsidePath 判断以及获取boundingRect
- * 
+ *
  * @module zrender/shape/tool/PathProxy
  * @author pissang (http://www.github.com/pissang)
- * 
+ *
  * @example
  *     var SomeShape = function() {
  *         this._pathProxy = new PathProxy();
@@ -37,8 +37,8 @@
  *         }
  *     }
  */
-define(function (require) {
-    
+
+
     var vector = require('../../tool/vector');
     // var computeBoundingBox = require('../../tool/computeBoundingBox');
 
@@ -249,5 +249,4 @@ define(function (require) {
 
     PathProxy.PathSegment = PathSegment;
 
-    return PathProxy;
-});
+    module.exports = PathProxy;

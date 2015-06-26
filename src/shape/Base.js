@@ -29,14 +29,12 @@
 
 /**
  * @typedef {Object} module:zrender/shape/Base~IBoundingRect
- * @property {number} x 左上角顶点x轴坐标 
+ * @property {number} x 左上角顶点x轴坐标
  * @property {number} y 左上角顶点y轴坐标
  * @property {number} width 包围盒矩形宽度
  * @property {number} height 包围盒矩形高度
  */
 
-define(
-    function(require) {
         var vmlCanvasManager = window['G_vmlCanvasManager'];
 
         var matrix = require('../tool/matrix');
@@ -56,10 +54,10 @@ define(
             var rect = _getTextRect(
                 text, x, y, textFont, textAlign, textBaseline
             );
-            
+
             text = (text + '').split('\n');
             var lineHeight = require('../tool/area').getTextHeight('国', textFont);
-            
+
             switch (textBaseline) {
                 case 'top':
                     y = rect.y;
@@ -70,7 +68,7 @@ define(
                 default:
                     y = rect.y + lineHeight / 2;
             }
-            
+
             for (var i = 0, l = text.length; i < l; i++) {
                 ctx.fillText(text[i], x, y);
                 y += lineHeight;
@@ -91,9 +89,9 @@ define(
             var area = require('../tool/area');
             var width = area.getTextWidth(text, textFont);
             var lineHeight = area.getTextHeight('国', textFont);
-            
+
             text = (text + '').split('\n');
-            
+
             switch (textAlign) {
                 case 'end':
                 case 'right':
@@ -130,9 +128,9 @@ define(
          * @param {Object} options 关于shape的配置项，可以是shape的自有属性，也可以是自定义的属性。
          */
         var Base = function(options) {
-            
+
             options = options || {};
-            
+
             /**
              * Shape id, 全局唯一
              * @type {string}
@@ -217,11 +215,11 @@ define(
          * @default true
          */
         Base.prototype.hoverable = true;
-        
+
         /**
          * z值，跟zlevel一样影响shape绘制的前后顺序，z值大的shape会覆盖在z值小的上面，
          * 但是并不会创建新的canvas，所以优先级低于zlevel，而且频繁改动的开销比zlevel小很多。
-         * 
+         *
          * @name module:zrender/shape/Base#z
          * @type {number}
          * @default 0
@@ -230,11 +228,11 @@ define(
 
         /**
          * 绘制图形
-         * 
+         *
          * @param {CanvasRenderingContext2D} ctx
          * @param {boolean} [isHighlight=false] 是否使用高亮属性
          * @param {Function} [updateCallback]
-         *        需要异步加载资源的shape可以通过这个callback(e), 
+         *        需要异步加载资源的shape可以通过这个callback(e),
          *        让painter更新视图，base.brush没用，需要的话重载brush
          */
         Base.prototype.brush = function (ctx, isHighlight) {
@@ -255,7 +253,7 @@ define(
                 default:
                     ctx.fill();
             }
-            
+
             this.drawText(ctx, style, this.style);
 
             this.afterBrush(ctx);
@@ -269,7 +267,7 @@ define(
          */
         Base.prototype.beforeBrush = function (ctx, isHighlight) {
             var style = this.style;
-            
+
             if (this.brushTypeOnly) {
                 style.brushType = this.brushTypeOnly;
             }
@@ -367,10 +365,10 @@ define(
                 }
             }
         };
-    
+
         /**
          * 根据默认样式扩展高亮样式
-         * 
+         *
          * @param {module:zrender/shape/Base~IBaseShapeStyle} style 默认样式
          * @param {module:zrender/shape/Base~IBaseShapeStyle} highlightStyle 高亮样式
          * @param {string} brushTypeOnly
@@ -397,7 +395,7 @@ define(
                     newStyle.strokeColor = highlightColor;
                     newStyle.lineWidth = (style.lineWidth || 1)
                                           + this.getHighlightZoom();
-                } 
+                }
                 else {
                     // 线型的则用原色加工高亮
                     newStyle.strokeColor = highlightStyle.strokeColor
@@ -449,9 +447,9 @@ define(
          * @return {module:zrender/shape/Base~IBoundingRect}
          */
         Base.prototype.getRect = function (style) {
-            log('getRect not implemented in ' + this.type);   
+            log('getRect not implemented in ' + this.type);
         };
-        
+
         /**
          * 判断鼠标位置是否在图形内
          * @param {number} x
@@ -468,7 +466,7 @@ define(
                 // 矩形内
                 return require('../tool/area').isInside(this, this.style, x, y);
             }
-            
+
             return false;
         };
 
@@ -510,11 +508,11 @@ define(
                                || 'top';                // 全局默认
 
             switch (textPosition) {
-                case 'inside': 
-                case 'top': 
-                case 'bottom': 
-                case 'left': 
-                case 'right': 
+                case 'inside':
+                case 'top':
+                case 'bottom':
+                case 'left':
+                case 'right':
                     if (this.getRect) {
                         var rect = (normalStyle || style).__rect
                                    || this.getRect(normalStyle || style);
@@ -590,7 +588,7 @@ define(
                     }
                     tx = xEnd;
                     ty = yEnd;
-                    
+
                     var angle = Math.atan((yStart - yEnd) / (xEnd - xStart)) / Math.PI * 180;
                     if ((xEnd - xStart) < 0) {
                         angle += 180;
@@ -598,7 +596,7 @@ define(
                     else if ((yStart - yEnd) < 0) {
                         angle += 360;
                     }
-                    
+
                     dd = 5;
                     if (angle >= 30 && angle <= 150) {
                         al = 'center';
@@ -632,8 +630,8 @@ define(
             if (tx != null && ty != null) {
                 _fillText(
                     ctx,
-                    style.text, 
-                    tx, ty, 
+                    style.text,
+                    tx, ty,
                     style.textFont,
                     style.textAlign || al,
                     style.textBaseline || bl
@@ -669,6 +667,4 @@ define(
         util.merge(Base.prototype, Transformable.prototype, true);
         util.merge(Base.prototype, Eventful.prototype, true);
 
-        return Base;
-    }
-);
+        module.exports = Base;

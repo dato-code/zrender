@@ -1,6 +1,4 @@
 
-define(
-    function (require) {
         var Base = require('./Base');
         var util = require('../tool/util');
         var zrColor = require('../tool/color');
@@ -14,7 +12,7 @@ define(
 
         /**
          * 动态线
-         * 
+         *
          * @param {Object} addShapeHandle
          * @param {Object} refreshHandle
          */
@@ -46,7 +44,7 @@ define(
             var shapeList = [];
             var canvasWidth = this.canvasWidth;
             var canvasHeight = this.canvasHeight;
-            
+
             // 初始化动画元素
             for (var i = 0; i < n; i++) {
                 var xStart = -Math.ceil(Math.random() * 1000);
@@ -56,7 +54,7 @@ define(
                 var color = effectOption.color == 'random'
                     ? zrColor.random()
                     : effectOption.color;
-                
+
                 shapeList[i] = new LineShape({
                     highlightStyle : {
                         xStart : xStart,
@@ -70,16 +68,16 @@ define(
                     len : len
                 });
             }
-            
+
             return setInterval(
                 function() {
                     addShapeHandle(background);
-                    
+
                     for (var i = 0; i < n; i++) {
                         var style = shapeList[i].highlightStyle;
 
                         if (style.xStart >= canvasWidth) {
-                            
+
                             shapeList[i].len = Math.ceil(Math.random() * 400);
                             style.xStart = -400;
                             style.xEnd = -400 + shapeList[i].len;
@@ -100,6 +98,4 @@ define(
             );
         };
 
-        return DynamicLine;
-    }
-);
+        module.exports = DynamicLine;

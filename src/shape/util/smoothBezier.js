@@ -1,12 +1,10 @@
 /**
- * 贝塞尔平滑曲线 
+ * 贝塞尔平滑曲线
  * @module zrender/shape/util/smoothBezier
- * @author pissang (https://www.github.com/pissang) 
+ * @author pissang (https://www.github.com/pissang)
  *         Kener (@Kener-林峰, kener.linfeng@gmail.com)
  *         errorrik (errorrik@gmail.com)
  */
-define(
-    function (require) {
         var vector = require('../../tool/vector');
 
         /**
@@ -20,7 +18,7 @@ define(
          *                           整个折线的包围盒做一个并集用来约束控制点。
          * @param {Array} 计算出来的控制点数组
          */
-        return function (points, smooth, isLoop, constraint) {
+        module.exports = function (points, smooth, isLoop, constraint) {
             var cps = [];
 
             var v = [];
@@ -51,12 +49,12 @@ define(
                 if (isLoop) {
                     prevPoint = points[i ? i - 1 : len - 1];
                     nextPoint = points[(i + 1) % len];
-                } 
+                }
                 else {
                     if (i === 0 || i === len - 1) {
                         cps.push(vector.clone(points[i]));
                         continue;
-                    } 
+                    }
                     else {
                         prevPoint = points[i - 1];
                         nextPoint = points[i + 1];
@@ -89,12 +87,10 @@ define(
                 cps.push(cp0);
                 cps.push(cp1);
             }
-            
+
             if (isLoop) {
                 cps.push(vector.clone(cps.shift()));
             }
 
             return cps;
         };
-    }
-);

@@ -1,6 +1,4 @@
 
-define(
-    function (require) {
         var Base = require('./Base');
         var util = require('../tool/util');
         var zrColor = require('../tool/color');
@@ -15,12 +13,12 @@ define(
 
         /**
          * 圆环
-         * 
+         *
          * @param {Object} addShapeHandle
          * @param {Object} refreshHandle
          */
         Ring.prototype._start = function (addShapeHandle, refreshHandle) {
-            
+
             // 特效默认配置
             var options = util.merge(
                 this.options,
@@ -53,7 +51,7 @@ define(
             if (textStyle.y == null) {
                 textStyle.y = (effectOption.y + (effectOption.r0 + effectOption.r) / 2 - 5);
             }
-            
+
             var textShape = this.createTextShape(options.textStyle);
             var background = this.createBackgroundShape(options.backgroundColor);
 
@@ -171,6 +169,4 @@ define(
             );
         };
 
-        return Ring;
-    }
-);
+        module.exports = Ring;

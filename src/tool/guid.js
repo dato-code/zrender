@@ -4,12 +4,9 @@
  * @author errorrik (errorrik@gmail.com)
  */
 
-define(
-    function() {
+
         var idStart = 0x0907;
 
-        return function () {
+        module.exports = function () {
             return 'zrender__' + (idStart++);
         };
-    }
-);

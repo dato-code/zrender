@@ -39,11 +39,10 @@
  * @property {string} [textBaseline] 默认根据textPosition自动设置，附加文本垂直对齐。
  *                                可以是top, bottom, middle, alphabetic, hanging, ideographic
  */
-define(
-    function (require) {
+
         var Base = require('./Base');
         var dashedLineTo = require('./util/dashedLineTo');
-        
+
         /**
          * @alias module:zrender/shape/Line
          * @param {Object} options
@@ -84,7 +83,7 @@ define(
                 else if (style.lineType == 'dashed'
                         || style.lineType == 'dotted'
                 ) {
-                    var dashLength = (style.lineWidth || 1)  
+                    var dashLength = (style.lineWidth || 1)
                                      * (style.lineType == 'dashed' ? 5 : 1);
                     dashedLineTo(
                         ctx,
@@ -104,7 +103,7 @@ define(
                 if (style.__rect) {
                     return style.__rect;
                 }
-                
+
                 var lineWidth = style.lineWidth || 1;
                 style.__rect = {
                     x : Math.min(style.xStart, style.xEnd) - lineWidth,
@@ -114,12 +113,10 @@ define(
                     height : Math.abs(style.yStart - style.yEnd)
                              + lineWidth
                 };
-                
+
                 return style.__rect;
             }
         };
 
         require('../tool/util').inherits(Line, Base);
-        return Line;
-    }
-);
+        module.exports = Line;

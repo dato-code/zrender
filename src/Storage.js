@@ -5,8 +5,6 @@
  * @author errorrik (errorrik@gmail.com)
  * @author pissang (https://github.com/pissang/)
  */
-define(
-    function (require) {
 
         'use strict';
 
@@ -50,13 +48,13 @@ define(
 
         /**
          * 遍历迭代器
-         * 
+         *
          * @param {Function} fun 迭代回调函数，return true终止迭代
          * @param {Object} [option] 迭代参数，缺省为仅降序遍历普通层图形
          * @param {boolean} [option.hover=true] 是否是高亮层图形
          * @param {string} [option.normal='up'] 是否是普通层图形，迭代时是否指定及z轴顺序
          * @param {boolean} [option.update=false] 是否在迭代前更新形状列表
-         * 
+         *
          */
         Storage.prototype.iterShape = function (fun, option) {
             if (!option) {
@@ -168,7 +166,7 @@ define(
         };
 
         Storage.prototype._updateAndAddShape = function (el, clipShapes) {
-            
+
             if (el.ignore) {
                 return;
             }
@@ -190,7 +188,7 @@ define(
             }
 
             if (el.type == 'group') {
-                
+
                 for (var i = 0; i < el._children.length; i++) {
                     var child = el._children[i];
 
@@ -202,7 +200,7 @@ define(
 
                 // Mark group clean here
                 el.__dirty = false;
-                
+
             }
             else {
                 el.__clipShapes = clipShapes;
@@ -213,7 +211,7 @@ define(
 
         /**
          * 修改图形(Shape)或者组(Group)
-         * 
+         *
          * @param {string|module:zrender/shape/Base|module:zrender/Group} el
          * @param {Object} [params] 参数
          */
@@ -283,7 +281,7 @@ define(
 
         /**
          * 添加高亮层数据
-         * 
+         *
          * @param {module:zrender/shape/Base} shape
          */
         Storage.prototype.addHover = function (shape) {
@@ -406,12 +404,10 @@ define(
          * 清空并且释放Storage
          */
         Storage.prototype.dispose = function () {
-            this._elements = 
-            this._renderList = 
+            this._elements =
+            this._renderList =
             this._roots =
             this._hoverElements = null;
         };
 
-        return Storage;
-    }
-);
+        module.exports = Storage;
