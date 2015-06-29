@@ -41,7 +41,7 @@
         /**
          * @type {string}
          */
-        zrender.version = '2.0.9';
+        zrender.version = '2.1.0';
 
         /**
          * 创建zrender实例
