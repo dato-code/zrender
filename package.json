@@ -2,7 +2,7 @@
   "name": "dato-zrender",
   "version": "2.1.0",
   "publishConfig": {
-    "registry": "http://52.8.255.204:4873"
+    "registry": "https://npm.dato.com"
   },
   "maintainers": [{
     "name": "Kener",
